@@ -9,7 +9,7 @@ export default class SignUp extends Component {
             password: "",
             name: "",
             lastname: "",
-        
+            confirmation: "",
         }
         
         this.updateEmailField = this.updateEmailField.bind(this);
@@ -19,16 +19,24 @@ export default class SignUp extends Component {
       updateEmailField(event) {
         this.setState({[event.target.name]: event.target.value});
       }
+
+      updateConfirmation=(event)=> {
+        this.setState({confirmation: event.target.value});
+      }
+
     handleSubmit(event) {
         event.preventDefault();
         console.log(JSON.stringify(this.state));
         if (this.state.password !== this.state.confirmation){
+          console.log(this.state.password)
+          console.log(this.state.confirmation)
+        
           alert("Wrong password, you fool...");
         } else {
           alert("Welcome 007");
         }
       }
-    
+      
   render() {
     
     return (
@@ -60,7 +68,7 @@ export default class SignUp extends Component {
          type="password"
          id="Password confirmation"
          name="Password confirmation"
-         onChange={this.updateEmailField}
+         onChange={this.updateConfirmation}
          value={this.state.confirmation}
          
          //event => this.setState({email: event.target.value})
